@@ -79,3 +79,6 @@ fabric.properties
 
 # DS_Store
 .DS_Store
+
+# .iml files
+JavaFxApplication.iml
