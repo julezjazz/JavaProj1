@@ -11,7 +11,6 @@ public class InHouse extends Part {
 
     public void setMachineId(int machineId) {
         this.machineId = machineId;
-        //is this okay even though we've already used a parameter named machineId to set this?
     }
 
     public int getMachineId() {
