@@ -23,24 +23,33 @@ public class Product {
         this.min = min;
         this.max = max;
     }
+    public int getId() {return id;}
+    public void setId(int id) {this.id = id;}
 
-        public int getId() {return id;}
-        public void setId(int id) {this.id = id;}
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
 
-        public String getName() {return name;}
-        public void setName(String name) {this.name = name;}
+    public double getPrice() {return price;}
+    public void setPrice(double price) {this.price = price;}
 
-        public double getPrice() {return price;}
-        public void setPrice(double price) {this.price = price;}
+    public int getStock() {return stock;}
+    public void setStock(int stock) {this.stock = stock;}
 
-        public int getStock() {return stock;}
-        public void setStock(int stock) {this.stock = stock;}
+    public int getMin() {return min;}
+    public void setMin(int min) {this.min = min;}
 
-        public int getMin() {return min;}
-        public void setMin(int min) {this.min = min;}
+    public int getMax() {return max;}
+    public void setMax(int max) {this.max = max;}
 
-        public int getMax() {return max;}
-        public void setMax(int max) {this.max = max;}
+   // public void addAssociatedPart(Part part) {
+        //Go back and complete
+    //}
 
+   // public boolean deleteAssociatedPart(Part selectedAssociatedPart) {
+        //go back and complete
+    //}
 
+    //public static ObservableList<Part> getAllAssociatedParts() {
+       //go back and complete
+    //}
 }
