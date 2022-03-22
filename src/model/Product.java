@@ -41,15 +41,16 @@ public class Product {
     public int getMax() {return max;}
     public void setMax(int max) {this.max = max;}
 
-   // public void addAssociatedPart(Part part) {
-        //Go back and complete
+   public void addAssociatedPart(Part part) {
+        associatedParts.add(part);
+    }
+
+ //  public boolean deleteAssociatedPart(Part selectedAssociatedPart) {
+       // associatedParts.remove(selectedAssociatedPart);
+        //.remove is a boolean already, how do I make this a boolean?
     //}
 
-   // public boolean deleteAssociatedPart(Part selectedAssociatedPart) {
-        //go back and complete
-    //}
-
-    //public static ObservableList<Part> getAllAssociatedParts() {
-       //go back and complete
-    //}
+    public ObservableList<Part> getAllAssociatedParts() {
+        return associatedParts;
+    }
 }
