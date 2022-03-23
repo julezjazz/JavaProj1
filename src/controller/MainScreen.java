@@ -9,7 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Inventory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,18 +40,31 @@ public class MainScreen implements Initializable {
     public TableColumn productInvLevelCol;
     public TableColumn productPriceCol;
 
-
-
-
-
-
+    public Inventory inventory;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        partsTable.setItems(inventory.getAllParts());
+        productsTable.setItems(inventory.getAllProducts());
+
+        partIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        partNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        partInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        partPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        productIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        productNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        productInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        productPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
 
 
     }
+
+
+
+
 
     public void onAddPart(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddPart.fxml"));
