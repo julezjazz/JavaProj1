@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,14 +20,34 @@ public class MainScreen implements Initializable {
     public Button addPart;
     public Button modifyPart;
     public Button deletePart;
+
     public Button addProduct;
     public Button modifyProduct;
     public Button deleteProduct;
+
+    public TableView partsTable;
+    public TableView productsTable;
+
+    public TableColumn partIdCol;
+    public TableColumn partNameCol;
+    public TableColumn partInvLevelCol;
+    public TableColumn partPriceCol;
+
+    public TableColumn productIdCol;
+    public TableColumn productNameCol;
+    public TableColumn productInvLevelCol;
+    public TableColumn productPriceCol;
+
+
+
+
+
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
 
     }
 
