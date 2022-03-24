@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -40,6 +41,8 @@ public class MainScreen implements Initializable {
     public TableColumn productNameCol;
     public TableColumn productInvLevelCol;
     public TableColumn productPriceCol;
+
+    public DialogPane dialogPane;
 
     public Inventory inventory;
 
@@ -105,8 +108,11 @@ public class MainScreen implements Initializable {
 
     public void onDeletePart(ActionEvent actionEvent) {
         Part SPart = (Part)partsTable.getSelectionModel().getSelectedItem();
-
         inventory.deletePart(SPart);
+        if (inventory.deletePart(SPart) == false) {
+            dialogPane.setContentText("Please select a part");
+        }
+        else {dialogPane.setContentText("");}
 
     }
 }
