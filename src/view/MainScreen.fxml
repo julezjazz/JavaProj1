@@ -26,7 +26,7 @@
                </font>
             </Label>
             <Button fx:id="modifyPart" layoutX="269.0" layoutY="167.0" mnemonicParsing="false" onAction="#onModifyPart" text="Modify" />
-            <Button fx:id="deletePart" layoutX="334.0" layoutY="167.0" mnemonicParsing="false" text="Delete" />
+            <Button fx:id="deletePart" layoutX="334.0" layoutY="167.0" mnemonicParsing="false" onAction="#onDeletePart" text="Delete" />
             <Button fx:id="addPart" layoutX="215.0" layoutY="167.0" mnemonicParsing="false" onAction="#onAddPart" text="Add" />
             <TextField layoutX="222.0" layoutY="10.0" promptText="Search by Part ID or Name" />
          </children>

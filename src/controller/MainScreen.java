@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
+import model.Part;
 
 import java.io.IOException;
 import java.net.URL;
@@ -100,5 +101,12 @@ public class MainScreen implements Initializable {
         stage.setTitle("Modify Product");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onDeletePart(ActionEvent actionEvent) {
+        Part SPart = (Part)partsTable.getSelectionModel().getSelectedItem();
+
+        inventory.deletePart(SPart);
+
     }
 }

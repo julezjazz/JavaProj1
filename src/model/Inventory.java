@@ -17,7 +17,12 @@ public class Inventory {
 
     //public static void updatePart(int index, Part selectedPart){}
 
-    //public static boolean deletePart(Part selectedPart){allParts.remove(selectedPart);}
+    public static boolean deletePart(Part selectedPart){
+        if(selectedPart == null)
+            return false;
+        allParts.remove(selectedPart);
+        return true;
+    }
     //how do I make above boolean?
 
     public static ObservableList<Part> getAllParts() {return allParts;}
