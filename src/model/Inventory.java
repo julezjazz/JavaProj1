@@ -23,7 +23,7 @@ public class Inventory {
         allParts.remove(selectedPart);
         return true;
     }
-    //how do I make above boolean?
+
 
     public static ObservableList<Part> getAllParts() {return allParts;}
 
@@ -37,8 +37,12 @@ public class Inventory {
 
     //public static void updateProduct(int index, Product newProduct){}
 
-    //public static boolean deleteProduct(Product selectedProduct){allProducts.remove(selectedProduct);}
-    //how do I make above boolean?
+    public static boolean deleteProduct(Product selectedProduct){
+        if(selectedProduct == null)
+            return false;
+        allProducts.remove(selectedProduct);
+        return true;
+    }
 
     public static ObservableList<Product> getAllProducts() {return allProducts;}
 

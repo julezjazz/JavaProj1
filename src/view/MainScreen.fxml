@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
@@ -47,7 +48,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="deleteProduct" layoutX="331.0" layoutY="168.0" mnemonicParsing="false" text="Delete" />
+            <Button fx:id="deleteProduct" layoutX="331.0" layoutY="168.0" mnemonicParsing="false" onAction="#onDeleteProduct" text="Delete" />
             <Button fx:id="modifyProduct" layoutX="264.0" layoutY="168.0" mnemonicParsing="false" onAction="#onModifyProduct" text="Modify" />
             <Button fx:id="addProduct" layoutX="213.0" layoutY="168.0" mnemonicParsing="false" onAction="#onAddProduct" text="Add" />
             <TextField layoutX="216.0" layoutY="10.0" promptText="Search by Product ID or Name" />
@@ -59,6 +60,10 @@
          </font>
       </Label>
       <Button layoutX="771.0" layoutY="385.0" mnemonicParsing="false" text="Exit" />
-      <DialogPane fx:id="dialogPane" layoutX="230.0" layoutY="42.0" />
+      <DialogPane fx:id="dialogPane" layoutX="230.0" layoutY="42.0">
+         <padding>
+            <Insets left="150.0" />
+         </padding>
+      </DialogPane>
    </children>
 </AnchorPane>

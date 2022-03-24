@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
+import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -88,6 +89,15 @@ public class MainScreen implements Initializable {
         stage.show();
     }
 
+    public void onDeletePart(ActionEvent actionEvent) {
+        Part SPart = (Part)partsTable.getSelectionModel().getSelectedItem();
+        inventory.deletePart(SPart);
+        if (inventory.deletePart(SPart) == false) {
+            dialogPane.setContentText("Invalid Selection");
+        }
+        else {dialogPane.setContentText("");}
+    }
+
     public void onAddProduct(ActionEvent actionEvent)throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddProduct.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -106,13 +116,12 @@ public class MainScreen implements Initializable {
         stage.show();
     }
 
-    public void onDeletePart(ActionEvent actionEvent) {
-        Part SPart = (Part)partsTable.getSelectionModel().getSelectedItem();
-        inventory.deletePart(SPart);
-        if (inventory.deletePart(SPart) == false) {
-            dialogPane.setContentText("Please select a part");
+    public void onDeleteProduct(ActionEvent actionEvent) {
+        Product SProduct = (Product)productsTable.getSelectionModel().getSelectedItem();
+        inventory.deleteProduct(SProduct);
+        if (inventory.deleteProduct(SProduct) == false) {
+            dialogPane.setContentText("Invalid Selection");
         }
         else {dialogPane.setContentText("");}
-
     }
 }
