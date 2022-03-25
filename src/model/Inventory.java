@@ -52,9 +52,9 @@ public class Inventory {
     }
 
     public static void addTestData(){
-        InHouse inHouse1 = new InHouse(1,"Part One", 4,3, 1, 4, 123);
-        InHouse inHouse2 = new InHouse(2, "Part Two", 6, 4, 1, 5, 321);
-        Outsourced outsourced1 = new Outsourced(3, "Part 3", 14, 2, 2, 5, "MT");
+        InHouse inHouse1 = new InHouse(1,"Part abc", 4,3, 1, 4, 123);
+        InHouse inHouse2 = new InHouse(2, "Part abd", 6, 4, 1, 5, 321);
+        Outsourced outsourced1 = new Outsourced(3, "Part 44", 14, 2, 2, 5, "MT");
         Outsourced outsourced2 = new Outsourced(4, "Part 4", 16, 3, 2, 5, "TM");
 
         allParts.add(inHouse1);
@@ -62,8 +62,8 @@ public class Inventory {
         allParts.add(outsourced1);
         allParts.add(outsourced2);
 
-        Product product1 = new Product(11, "Product One", 22, 2, 1, 4);
-        Product product2 = new Product(12, "Product 2", 17, 1, 1, 5);
+        Product product1 = new Product(11, "Product cde", 22, 2, 1, 4);
+        Product product2 = new Product(12, "Product cdf", 17, 1, 1, 5);
 
         allProducts.add(product1);
         allProducts.add(product2);
