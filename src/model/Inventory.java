@@ -13,7 +13,16 @@ public class Inventory {
 
     //public static Part lookupPart(int partId){}
 
-    //public static ObservableList<Part> lookupPart(String partName){}
+    public static ObservableList<Part> lookupPart(String partName) {
+        ObservableList<Part> namedParts = FXCollections.observableArrayList();
+
+        for (Part part : allParts) {
+            if (part.getName().contains(partName)) {
+                namedParts.add(part);
+            }
+        }
+        return namedParts;
+    }
 
     //public static void updatePart(int index, Part selectedPart){}
 
@@ -54,7 +63,7 @@ public class Inventory {
     public static void addTestData(){
         InHouse inHouse1 = new InHouse(111,"Part abc", 4,3, 1, 4, 123);
         InHouse inHouse2 = new InHouse(121, "Part abd", 6, 4, 1, 5, 321);
-        Outsourced outsourced1 = new Outsourced(131, "Part 44", 14, 2, 2, 5, "MT");
+        Outsourced outsourced1 = new Outsourced(444, "Part 444", 14, 2, 2, 5, "MT");
         Outsourced outsourced2 = new Outsourced(142, "Part 4", 16, 3, 2, 5, "TM");
 
         allParts.add(inHouse1);

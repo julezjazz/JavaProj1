@@ -125,11 +125,26 @@ public class MainScreen implements Initializable {
     public void getResultsParts(ActionEvent actionEvent) {
         String s = searchBarPart.getText();
 
-        ObservableList<Part> parts = searchByPartName(s);
+        ObservableList<Part> parts = inventory.lookupPart(s);
 
         partsTable.setItems(parts);
         searchBarPart.setText("");
+    }
 
+
+       /* if (parts.size() == 0) {
+            try {
+                int id = Integer.parseInt(s);
+                Part part = searchByPartId(id);
+                if (part != null)
+                    parts.add(part);
+            } catch (NumberFormatException e) {
+                //ignore
+            }
+
+
+
+        }
     }
 
     private ObservableList<Part> searchByPartName(String partialName){
@@ -142,9 +157,19 @@ public class MainScreen implements Initializable {
                 namedParts.add(part);
             }
         }
-
         return namedParts;
     }
 
+    private Part searchByPartId(int id){
+        ObservableList<Part> allParts = inventory.getAllParts();
+
+        for (Part part : allParts){
+            if(part.getId() == id) {
+                return part;
+            }
+        }
+        return null; //this would be the answer if you can't find anyone
+    }
+*/
 
 }
