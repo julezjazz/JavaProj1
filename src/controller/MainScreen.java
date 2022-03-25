@@ -64,21 +64,20 @@ public class MainScreen implements Initializable {
         productPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 
-
     }
 
     public void onAddPart(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddPart.fxml"));
-        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 600, 400);
         stage.setTitle("Add Part");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void onModifyPart(ActionEvent actionEvent)throws IOException {
+    public void onModifyPart(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
-        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 600, 400);
         stage.setTitle("Modify Part");
         stage.setScene(scene);
@@ -86,26 +85,27 @@ public class MainScreen implements Initializable {
     }
 
     public void onDeletePart(ActionEvent actionEvent) {
-        Part SPart = (Part)partsTable.getSelectionModel().getSelectedItem();
+        Part SPart = (Part) partsTable.getSelectionModel().getSelectedItem();
         inventory.deletePart(SPart);
         if (inventory.deletePart(SPart) == false) {
             dialogPane.setContentText("Invalid Selection");
+        } else {
+            dialogPane.setContentText("");
         }
-        else {dialogPane.setContentText("");}
     }
 
-    public void onAddProduct(ActionEvent actionEvent)throws IOException {
+    public void onAddProduct(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddProduct.fxml"));
-        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 600, 400);
         stage.setTitle("Add Product");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void onModifyProduct(ActionEvent actionEvent)throws IOException {
+    public void onModifyProduct(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyProduct.fxml"));
-        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 600, 400);
         stage.setTitle("Modify Product");
         stage.setScene(scene);
@@ -113,12 +113,13 @@ public class MainScreen implements Initializable {
     }
 
     public void onDeleteProduct(ActionEvent actionEvent) {
-        Product SProduct = (Product)productsTable.getSelectionModel().getSelectedItem();
+        Product SProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
         inventory.deleteProduct(SProduct);
         if (inventory.deleteProduct(SProduct) == false) {
             dialogPane.setContentText("Invalid Selection");
+        } else {
+            dialogPane.setContentText("");
         }
-        else {dialogPane.setContentText("");}
     }
 
 
@@ -129,25 +130,19 @@ public class MainScreen implements Initializable {
 
         partsTable.setItems(parts);
         searchBarPart.setText("");
-    }
 
+        if (parts.size() == 0) {
 
-       /* if (parts.size() == 0) {
-            try {
-                int id = Integer.parseInt(s);
-                Part part = searchByPartId(id);
-                if (part != null)
-                    parts.add(part);
-            } catch (NumberFormatException e) {
-                //ignore
-            }
-
-
-
+           int id = Integer.parseInt(s);
+           Part part = inventory.lookupPart(id);
+           if (part != null)
+              parts.add(part);
+           }
         }
     }
 
 
-*/
 
-}
+
+
+
