@@ -52,10 +52,10 @@ public class Inventory {
     }
 
     public static void addTestData(){
-        InHouse inHouse1 = new InHouse(1,"Part abc", 4,3, 1, 4, 123);
-        InHouse inHouse2 = new InHouse(2, "Part abd", 6, 4, 1, 5, 321);
-        Outsourced outsourced1 = new Outsourced(3, "Part 44", 14, 2, 2, 5, "MT");
-        Outsourced outsourced2 = new Outsourced(4, "Part 4", 16, 3, 2, 5, "TM");
+        InHouse inHouse1 = new InHouse(111,"Part abc", 4,3, 1, 4, 123);
+        InHouse inHouse2 = new InHouse(121, "Part abd", 6, 4, 1, 5, 321);
+        Outsourced outsourced1 = new Outsourced(131, "Part 44", 14, 2, 2, 5, "MT");
+        Outsourced outsourced2 = new Outsourced(142, "Part 4", 16, 3, 2, 5, "TM");
 
         allParts.add(inHouse1);
         allParts.add(inHouse2);
