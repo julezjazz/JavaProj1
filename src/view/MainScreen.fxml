@@ -30,7 +30,7 @@
             <Button fx:id="modifyPart" layoutX="269.0" layoutY="167.0" mnemonicParsing="false" onAction="#onModifyPart" text="Modify" />
             <Button fx:id="deletePart" layoutX="334.0" layoutY="167.0" mnemonicParsing="false" onAction="#onDeletePart" text="Delete" />
             <Button fx:id="addPart" layoutX="215.0" layoutY="167.0" mnemonicParsing="false" onAction="#onAddPart" text="Add" />
-            <TextField layoutX="222.0" layoutY="10.0" promptText="Search by Part ID or Name" />
+            <TextField fx:id="searchBarPart" layoutX="222.0" layoutY="10.0" onAction="#getResultsParts" promptText="Search by Part ID or Name" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="450.0" layoutY="150.0" prefHeight="218.0" prefWidth="396.0" style="-fx-border-color: black;">

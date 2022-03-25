@@ -1,15 +1,14 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
@@ -44,6 +43,7 @@ public class MainScreen implements Initializable {
     public TableColumn productPriceCol;
 
     public DialogPane dialogPane;
+    public TextField searchBarPart;
 
     public Inventory inventory;
 
@@ -66,10 +66,6 @@ public class MainScreen implements Initializable {
 
 
     }
-
-
-
-
 
     public void onAddPart(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddPart.fxml"));
@@ -124,4 +120,31 @@ public class MainScreen implements Initializable {
         }
         else {dialogPane.setContentText("");}
     }
+
+
+    public void getResultsParts(ActionEvent actionEvent) {
+        String s = searchBarPart.getText();
+
+        ObservableList<Part> parts = searchByPartName(s);
+
+        partsTable.setItems(parts);
+        searchBarPart.setText("");
+
+    }
+
+    private ObservableList<Part> searchByPartName(String partialName){
+        ObservableList<Part> namedParts = FXCollections.observableArrayList();
+
+        ObservableList<Part> allParts = inventory.getAllParts();
+
+        for(Part part : allParts){
+            if(part.getName().contains(partialName)){
+                namedParts.add(part);
+            }
+        }
+
+        return namedParts;
+    }
+
+
 }
