@@ -11,7 +11,14 @@ public class Inventory {
     //parts
     public static void addPart(Part newPart) {allParts.add(newPart);}
 
-    //public static Part lookupPart(int partId){}
+    public static Part lookupPart(int partId){
+        for (Part part : allParts){
+            if(part.getId() == partId) {
+                return part;
+            }
+        }
+        return null; //this would be the answer if you can't find anyone
+    }
 
     public static ObservableList<Part> lookupPart(String partName) {
         ObservableList<Part> namedParts = FXCollections.observableArrayList();

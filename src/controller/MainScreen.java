@@ -147,29 +147,7 @@ public class MainScreen implements Initializable {
         }
     }
 
-    private ObservableList<Part> searchByPartName(String partialName){
-        ObservableList<Part> namedParts = FXCollections.observableArrayList();
 
-        ObservableList<Part> allParts = inventory.getAllParts();
-
-        for(Part part : allParts){
-            if(part.getName().contains(partialName)){
-                namedParts.add(part);
-            }
-        }
-        return namedParts;
-    }
-
-    private Part searchByPartId(int id){
-        ObservableList<Part> allParts = inventory.getAllParts();
-
-        for (Part part : allParts){
-            if(part.getId() == id) {
-                return part;
-            }
-        }
-        return null; //this would be the answer if you can't find anyone
-    }
 */
 
 }
