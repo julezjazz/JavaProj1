@@ -148,7 +148,12 @@ public class MainScreen implements Initializable {
         productsTable.setItems(products);
         searchBarProduct.setText("");
 
-
+        if (products.size() == 0) {
+            int id = Integer.parseInt(s);
+            Product product = inventory.lookupProduct(id);
+            if (product != null)
+                products.add(product);
+        }
     }
 
 

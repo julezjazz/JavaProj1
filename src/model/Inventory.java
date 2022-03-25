@@ -47,7 +47,14 @@ public class Inventory {
    //products
     public static void addProduct(Product newProduct) {allProducts.add(newProduct);}
 
-    //public static Product lookupProduct(int productId){}
+    public static Product lookupProduct(int productId){
+        for (Product product : allProducts) {
+            if (product.getId() == productId) {
+                return product;
+            }
+        }
+        return null;
+    }
 
     public static ObservableList<Product> lookupProduct(String productName){
         ObservableList<Product> namedProducts = FXCollections.observableArrayList();
