@@ -17,7 +17,7 @@ public class Inventory {
                 return part;
             }
         }
-        return null; //this would be the answer if you can't find anyone
+        return null;
     }
 
     public static ObservableList<Part> lookupPart(String partName) {
@@ -49,7 +49,15 @@ public class Inventory {
 
     //public static Product lookupProduct(int productId){}
 
-    //public static ObservableList<Product> lookupProduct(String productName){}
+    public static ObservableList<Product> lookupProduct(String productName){
+        ObservableList<Product> namedProducts = FXCollections.observableArrayList();
+        for (Product product : allProducts) {
+            if (product.getName().contains(productName)) {
+                namedProducts.add(product);
+            }
+        }
+        return namedProducts;
+    }
 
     //public static void updateProduct(int index, Product newProduct){}
 

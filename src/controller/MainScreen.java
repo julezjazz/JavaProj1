@@ -44,6 +44,7 @@ public class MainScreen implements Initializable {
 
     public DialogPane dialogPane;
     public TextField searchBarPart;
+    public TextField searchBarProduct;
 
     public Inventory inventory;
 
@@ -138,8 +139,27 @@ public class MainScreen implements Initializable {
            if (part != null)
               parts.add(part);
            }
-        }
     }
+
+    public void getResultsProducts(ActionEvent actionEvent){
+        String s = searchBarProduct.getText();
+
+        ObservableList<Product> products = inventory.lookupProduct(s);
+        productsTable.setItems(products);
+        searchBarProduct.setText("");
+
+
+    }
+
+
+
+
+
+
+
+}
+
+
 
 
 
