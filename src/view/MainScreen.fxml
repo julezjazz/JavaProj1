@@ -59,7 +59,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="771.0" layoutY="385.0" mnemonicParsing="false" text="Exit" />
+      <Button layoutX="771.0" layoutY="385.0" mnemonicParsing="false" onAction="#onExitButton" text="Exit" />
       <DialogPane fx:id="dialogPane" layoutX="230.0" layoutY="42.0">
          <padding>
             <Insets left="150.0" />

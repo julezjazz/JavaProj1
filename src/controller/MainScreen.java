@@ -167,11 +167,9 @@ public class MainScreen implements Initializable {
     }
 
 
-
-
-
-
-
+    public void onExitButton(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }
 
 
