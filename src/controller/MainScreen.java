@@ -125,6 +125,8 @@ public class MainScreen implements Initializable {
 
 
     public void getResultsParts(ActionEvent actionEvent) {
+        dialogPane.setContentText("");
+
         String s = searchBarPart.getText();
 
         ObservableList<Part> parts = inventory.lookupPart(s);
@@ -139,9 +141,14 @@ public class MainScreen implements Initializable {
            if (part != null)
               parts.add(part);
            }
+        if (parts.size() == 0) {
+            dialogPane.setContentText("Part could not be found. Please try a new search.");
+        }
     }
 
     public void getResultsProducts(ActionEvent actionEvent){
+        dialogPane.setContentText("");
+
         String s = searchBarProduct.getText();
 
         ObservableList<Product> products = inventory.lookupProduct(s);
@@ -153,6 +160,9 @@ public class MainScreen implements Initializable {
             Product product = inventory.lookupProduct(id);
             if (product != null)
                 products.add(product);
+        }
+        if (products.size() == 0) {
+            dialogPane.setContentText("Product could not be found. Please try a new search.");
         }
     }
 
