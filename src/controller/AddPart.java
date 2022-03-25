@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class AddPart implements Initializable {
 
-    public Label machineIdLabel;
+    public Label toggleLabel;
     public RadioButton inHouse;
     public RadioButton outsourced;
 
@@ -18,11 +18,14 @@ public class AddPart implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
     }
 
     public void onOutsourced(ActionEvent actionEvent) {
+        toggleLabel.setText("Company Name");
     }
 
     public void onInHouse(ActionEvent actionEvent) {
+        toggleLabel.setText("Machine ID");
     }
 }
