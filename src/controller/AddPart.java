@@ -60,7 +60,7 @@ public class AddPart implements Initializable {
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 850, 750);
         stage.setTitle("Modify Product");
         stage.setScene(scene);
         stage.show();

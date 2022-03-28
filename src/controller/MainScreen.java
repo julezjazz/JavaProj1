@@ -70,7 +70,7 @@ public class MainScreen implements Initializable {
     public void onAddPart(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddPart.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 650, 550);
         stage.setTitle("Add Part");
         stage.setScene(scene);
         stage.show();
@@ -79,7 +79,7 @@ public class MainScreen implements Initializable {
     public void onModifyPart(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 650, 550);
         stage.setTitle("Modify Part");
         stage.setScene(scene);
         stage.show();
@@ -98,7 +98,7 @@ public class MainScreen implements Initializable {
     public void onAddProduct(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddProduct.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 900, 700);
         stage.setTitle("Add Product");
         stage.setScene(scene);
         stage.show();
@@ -107,7 +107,7 @@ public class MainScreen implements Initializable {
     public void onModifyProduct(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyProduct.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 900, 700);
         stage.setTitle("Modify Product");
         stage.setScene(scene);
         stage.show();
