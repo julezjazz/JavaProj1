@@ -42,7 +42,7 @@ public class MainScreen implements Initializable {
     public TableColumn productInvLevelCol;
     public TableColumn productPriceCol;
 
-    public DialogPane dialogPane;
+    public Label warningLabel;
     public TextField searchBarPart;
     public TextField searchBarProduct;
 
@@ -89,9 +89,9 @@ public class MainScreen implements Initializable {
         Part SPart = (Part) partsTable.getSelectionModel().getSelectedItem();
         inventory.deletePart(SPart);
         if (inventory.deletePart(SPart) == false) {
-            dialogPane.setContentText("Invalid Selection");
+            warningLabel.setText("Invalid Selection");
         } else {
-            dialogPane.setContentText("");
+            warningLabel.setText("");
         }
     }
 
@@ -117,15 +117,15 @@ public class MainScreen implements Initializable {
         Product SProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
         inventory.deleteProduct(SProduct);
         if (inventory.deleteProduct(SProduct) == false) {
-            dialogPane.setContentText("Invalid Selection");
+            warningLabel.setText("Invalid Selection");
         } else {
-            dialogPane.setContentText("");
+            warningLabel.setText("");
         }
     }
 
 
     public void getResultsParts(ActionEvent actionEvent) {
-        dialogPane.setContentText("");
+       warningLabel.setText("");
 
         String s = searchBarPart.getText();
 
@@ -142,12 +142,12 @@ public class MainScreen implements Initializable {
               parts.add(part);
            }
         if (parts.size() == 0) {
-            dialogPane.setContentText("Part could not be found. Please try a new search.");
+            warningLabel.setText("Part could not be found. Please try a new search.");
         }
     }
 
     public void getResultsProducts(ActionEvent actionEvent){
-        dialogPane.setContentText("");
+        warningLabel.setText("");
 
         String s = searchBarProduct.getText();
 
@@ -162,7 +162,7 @@ public class MainScreen implements Initializable {
                 products.add(product);
         }
         if (products.size() == 0) {
-            dialogPane.setContentText("Product could not be found. Please try a new search.");
+            warningLabel.setText("Product could not be found. Please try a new search.");
         }
     }
 

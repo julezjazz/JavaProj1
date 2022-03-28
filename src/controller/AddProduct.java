@@ -31,7 +31,7 @@ public class AddProduct implements Initializable {
 
     public TextField searchBarPart2;
 
-    public Label warningLabel;
+    public Label warningLabel2;
 
     public Inventory inventory;
 
@@ -48,7 +48,7 @@ public class AddProduct implements Initializable {
     }
 
     public void getResultsParts2(ActionEvent actionEvent) {
-        warningLabel.setText("");
+        warningLabel2.setText("");
 
         String s = searchBarPart2.getText();
 
@@ -65,7 +65,7 @@ public class AddProduct implements Initializable {
                 parts.add(part);
         }
         if (parts.size() == 0) {
-            warningLabel.setText("Part could not be found. Please try a new search.");
+            warningLabel2.setText("Part could not be found. Please try a new search.");
         }
     }
 
