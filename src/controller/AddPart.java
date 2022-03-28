@@ -61,7 +61,7 @@ public class AddPart implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 850, 750);
-        stage.setTitle("Modify Product");
+        stage.setTitle("Inventory Management");
         stage.setScene(scene);
         stage.show();
     }

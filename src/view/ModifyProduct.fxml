@@ -15,14 +15,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyProduct">
     <children>
         <VBox layoutY="9.0" prefHeight="700.0" prefWidth="450.0">
             <children>
                 <TilePane prefHeight="86.0" prefWidth="450.0">
                     <children>
-                        <Label text="Add Product">
+                        <Label text="Modify Product">
                             <padding>
                                 <Insets left="50.0" top="50.0" />
                             </padding>
@@ -119,11 +118,10 @@
                     <children>
                         <Button layoutX="273.0" layoutY="24.0" mnemonicParsing="false" text="Remove Associated Part" />
                         <Button layoutX="273.0" layoutY="71.0" mnemonicParsing="false" text="Save" />
-                        <Button layoutX="365.0" layoutY="71.0" mnemonicParsing="false" text="Cancel" />
+                        <Button fx:id="cancelButton" layoutX="365.0" layoutY="71.0" mnemonicParsing="false" onAction="#onCancelButton" text="Cancel" />
                     </children>
                 </Pane>
             </children>
         </VBox>
     </children>
 </AnchorPane>
-
