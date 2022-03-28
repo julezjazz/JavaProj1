@@ -80,19 +80,19 @@
             <children>
                 <TilePane prefHeight="86.0" prefWidth="450.0">
                     <children>
-                        <TextField prefHeight="26.0" prefWidth="174.0" promptText="Search by Part ID or Name">
+                        <TextField fx:id="searchBarPart3" onAction="#getResultsParts3" prefHeight="26.0" prefWidth="174.0" promptText="Search by Part ID or Name">
                             <TilePane.margin>
                                 <Insets left="265.0" top="50.0" />
                             </TilePane.margin>
                         </TextField>
                     </children>
                 </TilePane>
-                <TableView prefHeight="200.0" prefWidth="200.0">
+                <TableView fx:id="partsTable3" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                        <TableColumn prefWidth="112.51" text="Part ID" />
-                        <TableColumn prefWidth="112.51" text="Part Name" />
-                        <TableColumn prefWidth="112.51" text="Inventory Level" />
-                        <TableColumn prefWidth="112.51" text="Price per Unit" />
+                        <TableColumn fx:id="partIdCol3" prefWidth="112.51" text="Part ID" />
+                        <TableColumn fx:id="partNameCol3" prefWidth="112.51" text="Part Name" />
+                        <TableColumn fx:id="partInvLevelCol3" prefWidth="112.51" text="Inventory Level" />
+                        <TableColumn fx:id="partPriceCol3" prefWidth="112.51" text="Price per Unit" />
                     </columns>
                     <VBox.margin>
                         <Insets right="10.0" />
@@ -101,6 +101,7 @@
                 <Pane prefHeight="84.0" prefWidth="450.0">
                     <children>
                         <Button layoutX="333.0" layoutY="29.0" mnemonicParsing="false" text="Add" />
+                  <Label fx:id="warningLabel3" layoutX="14.0" layoutY="33.0" textFill="#f40505" />
                     </children>
                 </Pane>
                 <TableView prefHeight="200.0" prefWidth="200.0">

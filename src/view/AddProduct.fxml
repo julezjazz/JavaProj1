@@ -101,7 +101,7 @@
             <Pane prefHeight="84.0" prefWidth="450.0">
                <children>
                   <Button layoutX="333.0" layoutY="29.0" mnemonicParsing="false" text="Add" />
-                  <Label fx:id="warningLabel" layoutX="34.0" layoutY="33.0" textFill="#f40505" />
+                  <Label fx:id="warningLabel2" layoutX="34.0" layoutY="33.0" textFill="#f40505" />
                </children>
             </Pane>
             <TableView prefHeight="200.0" prefWidth="200.0">
