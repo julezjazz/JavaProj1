@@ -39,6 +39,7 @@ public class ModifyPart implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (partTypeIH == true) {
+            inHouse.setSelected(true);
             idTF2.setText(Integer.toString(ihPartToModify.getId()));
             nameTF2.setText(ihPartToModify.getName());
             stockTF2.setText(Integer.toString(ihPartToModify.getStock()));
@@ -48,6 +49,7 @@ public class ModifyPart implements Initializable {
             toggleTF2.setText(Integer.toString(ihPartToModify.getMachineId()));
         }
         else {
+            outsourced.setSelected(true);
             idTF2.setText(Integer.toString(osPartToModify.getId()));
             nameTF2.setText(osPartToModify.getName());
             stockTF2.setText(Integer.toString(osPartToModify.getStock()));
