@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.InHouse;
 import model.Inventory;
+import model.Outsourced;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +33,7 @@ public class AddPart implements Initializable {
 
     public Inventory inventory;
 
-
+    public static int autoId = 101;
 
 
 
@@ -53,22 +54,30 @@ public class AddPart implements Initializable {
 
 
     public void onSaveButton(ActionEvent actionEvent) throws IOException {
+
+        autoId += 2;
         if(inHouse.isSelected()) {
-          InHouse iH = new InHouse(1, nameTF.getText(), Double.parseDouble(priceTF.getText()),
-                  Integer.parseInt(stockTF.getText()), Integer.parseInt(minTF.getText()),
-                  Integer.parseInt(maxTF.getText()), Integer.parseInt(toggleTF.getText()));
+            InHouse iH = new InHouse(autoId, nameTF.getText(), Double.parseDouble(priceTF.getText()),
+                    Integer.parseInt(stockTF.getText()), Integer.parseInt(minTF.getText()),
+                    Integer.parseInt(maxTF.getText()), Integer.parseInt(toggleTF.getText()));
 
-          inventory.addPart(iH);
-
-            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 850, 750);
-            stage.setTitle("Inventory Management");
-            stage.setScene(scene);
-            stage.show();
-
+            inventory.addPart(iH);
         }
 
+        else {
+            Outsourced oS = new Outsourced(autoId, nameTF.getText(), Double.parseDouble(priceTF.getText()),
+                    Integer.parseInt(stockTF.getText()), Integer.parseInt(minTF.getText()),
+                    Integer.parseInt(maxTF.getText()), toggleTF.getText());
+
+            inventory.addPart(oS);
+        }
+
+        Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 850, 750);
+        stage.setTitle("Inventory Management");
+        stage.setScene(scene);
+        stage.show();
     }
 
 
