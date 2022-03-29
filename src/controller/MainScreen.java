@@ -11,9 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.Inventory;
-import model.Part;
-import model.Product;
+import model.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,6 +44,10 @@ public class MainScreen implements Initializable {
     public TextField searchBarPart;
     public TextField searchBarProduct;
 
+    public static Boolean partTypeIH = true;
+    public static InHouse ihPartToModify;
+    public static Outsourced osPartToModify;
+
     public Inventory inventory;
 
 
@@ -77,6 +79,18 @@ public class MainScreen implements Initializable {
     }
 
     public void onModifyPart(ActionEvent actionEvent) throws IOException {
+       if (partsTable.getSelectionModel().getSelectedItem().getClass() == InHouse.class){
+           System.out.println("In House");
+           ihPartToModify = (InHouse) partsTable.getSelectionModel().getSelectedItem();
+           partTypeIH = true;
+        }
+        else if (partsTable.getSelectionModel().getSelectedItem().getClass() == Outsourced.class) {
+           System.out.println("Outsourced");
+            osPartToModify = (Outsourced) partsTable.getSelectionModel().getSelectedItem();
+            partTypeIH = false;
+        }
+        //add line for error message
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 650, 550);
@@ -86,9 +100,9 @@ public class MainScreen implements Initializable {
     }
 
     public void onDeletePart(ActionEvent actionEvent) {
-        Part SPart = (Part) partsTable.getSelectionModel().getSelectedItem();
-        inventory.deletePart(SPart);
-        if (inventory.deletePart(SPart) == false) {
+        Part sPart = (Part) partsTable.getSelectionModel().getSelectedItem();
+        inventory.deletePart(sPart);
+        if (inventory.deletePart(sPart) == false) {
             warningLabel.setText("Invalid Selection");
         } else {
             warningLabel.setText("");
@@ -114,9 +128,9 @@ public class MainScreen implements Initializable {
     }
 
     public void onDeleteProduct(ActionEvent actionEvent) {
-        Product SProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
-        inventory.deleteProduct(SProduct);
-        if (inventory.deleteProduct(SProduct) == false) {
+        Product sProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
+        inventory.deleteProduct(sProduct);
+        if (inventory.deleteProduct(sProduct) == false) {
             warningLabel.setText("Invalid Selection");
         } else {
             warningLabel.setText("");

@@ -58,16 +58,16 @@
                         <Label text="Price" GridPane.rowIndex="3" />
                         <Label text="Max" GridPane.rowIndex="4" />
                         <Label fx:id="toggleLabel" text="Machine ID" GridPane.rowIndex="5" />
-                        <TextField editable="false" GridPane.columnIndex="1">
+                        <TextField fx:id="idTF2" editable="false" GridPane.columnIndex="1">
                             <font>
                                 <Font name="System Italic" size="12.0" />
                             </font></TextField>
-                        <TextField fx:id="nameTF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="stockTF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="priceTF" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="maxTF" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="toggleTF" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="minTF" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <TextField fx:id="nameTF2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="stockTF2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="priceTF2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="maxTF2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="toggleTF2" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="minTF2" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                         <Label text="Min" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>
