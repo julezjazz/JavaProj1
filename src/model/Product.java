@@ -45,10 +45,12 @@ public class Product {
         associatedParts.add(part);
     }
 
- //  public boolean deleteAssociatedPart(Part selectedAssociatedPart) {
-       // associatedParts.remove(selectedAssociatedPart);
-        //.remove is a boolean already, how do I make this a boolean?
-    //}
+   public boolean deleteAssociatedPart(Part selectedAssociatedPart) {
+        if(selectedAssociatedPart == null)
+            return false;
+        associatedParts.remove(selectedAssociatedPart);
+        return true;
+    }
 
     public ObservableList<Part> getAllAssociatedParts() {
         return associatedParts;
