@@ -50,7 +50,7 @@ public class Product {
         return true;
     }
 
-    public ObservableList<Part> getAllAssociatedParts() {return associatedParts;}
+   public ObservableList<Part> getAllAssociatedParts() {return associatedParts;}
 
 
 }

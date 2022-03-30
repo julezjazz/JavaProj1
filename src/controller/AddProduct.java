@@ -16,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
-import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,7 +50,7 @@ public class AddProduct implements Initializable {
     public Inventory inventory;
    // public Product product;
 
-    public ObservableList<Part> bottomTable = FXCollections.observableArrayList();
+    public ObservableList<Part> bottomTableList = FXCollections.observableArrayList();
 
 
 
@@ -65,7 +64,7 @@ public class AddProduct implements Initializable {
         partPriceCol2.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 
-        associatedPartsTable.setItems(bottomTable);
+        associatedPartsTable.setItems(bottomTableList);
 
         aPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         aPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -100,7 +99,7 @@ public class AddProduct implements Initializable {
 
     public void onAddButton(ActionEvent actionEvent) {
         Part sPart = (Part) partsTable2.getSelectionModel().getSelectedItem();
-        bottomTable.add(sPart);
+        bottomTableList.add(sPart);
     }
 
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
@@ -113,6 +112,8 @@ public class AddProduct implements Initializable {
     }
 
     public void onRemoveButton(ActionEvent actionEvent) {
+        Part sPart = (Part) associatedPartsTable.getSelectionModel().getSelectedItem();
+        bottomTableList.remove(sPart);
     }
 
     public void onSaveButton(ActionEvent actionEvent) {
