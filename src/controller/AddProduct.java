@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
+import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,17 +25,33 @@ import java.util.ResourceBundle;
 public class AddProduct implements Initializable {
 
     public TableView partsTable2;
+    public TableView associatedPartsTable;
 
     public TableColumn partIdCol2;
     public TableColumn partNameCol2;
     public TableColumn partInvLevelCol2;
     public TableColumn partPriceCol2;
 
+    public TableColumn aPartIdCol;
+    public TableColumn aPartNameCol;
+    public TableColumn aPartInvLevelCol;
+    public TableColumn aPartPriceCol;
+
+
     public TextField searchBarPart2;
+    public TextField prodNameTF;
+    public TextField prodStockTF;
+    public TextField prodPriceTF;
+    public TextField prodMaxTF;
+    public TextField prodMinTF;
+
 
     public Label warningLabel2;
 
     public Inventory inventory;
+   // public Product product;
+
+    public ObservableList<Part> bottomTable = FXCollections.observableArrayList();
 
 
 
@@ -45,6 +63,16 @@ public class AddProduct implements Initializable {
         partNameCol2.setCellValueFactory(new PropertyValueFactory<>("name"));
         partInvLevelCol2.setCellValueFactory(new PropertyValueFactory<>("stock"));
         partPriceCol2.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+
+        associatedPartsTable.setItems(bottomTable);
+
+        aPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        aPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        aPartInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        aPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+
     }
 
     public void getResultsParts2(ActionEvent actionEvent) {
@@ -69,6 +97,12 @@ public class AddProduct implements Initializable {
         }
     }
 
+
+    public void onAddButton(ActionEvent actionEvent) {
+        Part sPart = (Part) partsTable2.getSelectionModel().getSelectedItem();
+        bottomTable.add(sPart);
+    }
+
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -76,6 +110,12 @@ public class AddProduct implements Initializable {
         stage.setTitle("Inventory Management");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onRemoveButton(ActionEvent actionEvent) {
+    }
+
+    public void onSaveButton(ActionEvent actionEvent) {
     }
 }
 
