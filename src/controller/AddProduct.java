@@ -100,8 +100,15 @@ public class AddProduct implements Initializable {
 
 
     public void onAddButton(ActionEvent actionEvent) {
-        Part sPart = (Part) partsTable2.getSelectionModel().getSelectedItem();
-        bottomTableList.add(sPart);
+        warningLabel.setText("");
+
+        if(partsTable2.getSelectionModel().getSelectedItem() == null) {
+            warningLabel.setText("Please select a part to add");
+        }
+        else {
+            Part sPart = (Part) partsTable2.getSelectionModel().getSelectedItem();
+            bottomTableList.add(sPart);
+        }
     }
 
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
@@ -114,8 +121,14 @@ public class AddProduct implements Initializable {
     }
 
     public void onRemoveButton(ActionEvent actionEvent) {
-        Part sPart = (Part) associatedPartsTable.getSelectionModel().getSelectedItem();
-        bottomTableList.remove(sPart);
+        warningLabel.setText("");
+        if(associatedPartsTable.getSelectionModel().getSelectedItem() == null) {
+            warningLabel.setText("Please select a part to remove");
+        }
+        else {
+            Part sPart = (Part) associatedPartsTable.getSelectionModel().getSelectedItem();
+            bottomTableList.remove(sPart);
+        }
     }
 
     public void onSaveButton(ActionEvent actionEvent) throws IOException {

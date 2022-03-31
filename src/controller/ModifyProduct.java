@@ -109,13 +109,25 @@ public class ModifyProduct implements Initializable {
     }
 
     public void onAddButton(ActionEvent actionEvent) {
-        Part part = (Part) partsTable3.getSelectionModel().getSelectedItem();
-        bottomTableList2.add(part);
+        warningLabel.setText("");
+        if (partsTable3.getSelectionModel().getSelectedItem() == null) {
+            warningLabel.setText("Please select a part to add");
+        }
+        else {
+            Part part = (Part) partsTable3.getSelectionModel().getSelectedItem();
+            bottomTableList2.add(part);
+        }
     }
 
     public void onRemove(ActionEvent actionEvent) {
-        Part part = (Part) associatedPartsTable2.getSelectionModel().getSelectedItem();
-        bottomTableList2.remove(part);
+        warningLabel.setText("");
+        if(associatedPartsTable2.getSelectionModel().getSelectedItem() == null) {
+            warningLabel.setText("Please select a part to remove");
+        }
+        else {
+            Part part = (Part) associatedPartsTable2.getSelectionModel().getSelectedItem();
+            bottomTableList2.remove(part);
+        }
     }
 
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
