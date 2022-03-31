@@ -134,6 +134,8 @@ public class ModifyProduct implements Initializable {
         productToModify.setMax(Integer.parseInt(prodMaxTF2.getText()));
         productToModify.setMin(Integer.parseInt(prodMinTF2.getText()));
 
+        productToModify.getAllAssociatedParts().clear();
+
         for (Part items : bottomTableList2) {
             productToModify.addAssociatedPart(items);
         }

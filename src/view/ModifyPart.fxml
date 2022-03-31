@@ -31,6 +31,11 @@
                             </toggleGroup>
                         </RadioButton>
                         <RadioButton fx:id="outsourced" mnemonicParsing="false" onAction="#onOutsourced" text="Outsourced" toggleGroup="$toggleGroup" />
+                  <Label fx:id="warningLabel" textFill="#f40505">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
                     </children>
                 </HBox>
                 <GridPane hgap="10.0" vgap="10.0">

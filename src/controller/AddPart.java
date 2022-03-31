@@ -24,6 +24,8 @@ public class AddPart implements Initializable {
     public RadioButton inHouse;
     public RadioButton outsourced;
 
+    public Label warningLabel;
+
     public TextField nameTF;
     public TextField stockTF;
     public TextField priceTF;
@@ -56,12 +58,31 @@ public class AddPart implements Initializable {
     public void onSaveButton(ActionEvent actionEvent) throws IOException {
 
         autoId += 2;
-        if(inHouse.isSelected()) {
+
+        warningLabel.setText("");
+
+        if(Integer.parseInt(minTF.getText()) >= Integer.parseInt(maxTF.getText())){
+            warningLabel.setText("Min must be less than max");
+        }
+        else if(Integer.parseInt(minTF.getText()) > Integer.parseInt(stockTF.getText())){
+            warningLabel.setText("Inventory level must be greater than or equal to min");
+        }
+        else if(Integer.parseInt(maxTF.getText()) < Integer.parseInt(stockTF.getText())) {
+            warningLabel.setText("Inventory level must be less than or equal to max");
+        }
+        else if(inHouse.isSelected()) {
             InHouse iH = new InHouse(autoId, nameTF.getText(), Double.parseDouble(priceTF.getText()),
                     Integer.parseInt(stockTF.getText()), Integer.parseInt(minTF.getText()),
                     Integer.parseInt(maxTF.getText()), Integer.parseInt(toggleTF.getText()));
 
             inventory.addPart(iH);
+
+            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 850, 750);
+            stage.setTitle("Inventory Management");
+            stage.setScene(scene);
+            stage.show();
         }
 
         else {
@@ -70,14 +91,16 @@ public class AddPart implements Initializable {
                     Integer.parseInt(maxTF.getText()), toggleTF.getText());
 
             inventory.addPart(oS);
+
+            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 850, 750);
+            stage.setTitle("Inventory Management");
+            stage.setScene(scene);
+            stage.show();
         }
 
-        Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 850, 750);
-        stage.setTitle("Inventory Management");
-        stage.setScene(scene);
-        stage.show();
+
     }
 
 
