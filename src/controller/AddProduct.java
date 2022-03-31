@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
+import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,9 +49,10 @@ public class AddProduct implements Initializable {
     public Label warningLabel2;
 
     public Inventory inventory;
-   // public Product product;
 
     public ObservableList<Part> bottomTableList = FXCollections.observableArrayList();
+
+    public static int prodAutoId = 100;
 
 
 
@@ -116,7 +118,27 @@ public class AddProduct implements Initializable {
         bottomTableList.remove(sPart);
     }
 
-    public void onSaveButton(ActionEvent actionEvent) {
+    public void onSaveButton(ActionEvent actionEvent) throws IOException {
+        prodAutoId += 2;
+
+        Product product = new Product(prodAutoId, prodNameTF.getText(), Double.parseDouble(prodPriceTF.getText()),
+                Integer.parseInt(prodStockTF.getText()), Integer.parseInt(prodMaxTF.getText()),
+                Integer.parseInt(prodMinTF.getText()));
+
+        inventory.addProduct(product);
+
+        for (Part items : bottomTableList) {
+            product.addAssociatedPart(items);
+        }
+
+
+        Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 850, 750);
+        stage.setTitle("Inventory Management");
+        stage.setScene(scene);
+        stage.show();
+
     }
 }
 
