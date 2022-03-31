@@ -47,6 +47,7 @@ public class MainScreen implements Initializable {
     public static Boolean partTypeIH = true;
     public static InHouse ihPartToModify;
     public static Outsourced osPartToModify;
+    public static Product productToModify;
 
     public Inventory inventory;
 
@@ -80,12 +81,10 @@ public class MainScreen implements Initializable {
 
     public void onModifyPart(ActionEvent actionEvent) throws IOException {
        if (partsTable.getSelectionModel().getSelectedItem().getClass() == InHouse.class){
-           System.out.println("In House");
            ihPartToModify = (InHouse) partsTable.getSelectionModel().getSelectedItem();
            partTypeIH = true;
         }
         else if (partsTable.getSelectionModel().getSelectedItem().getClass() == Outsourced.class) {
-           System.out.println("Outsourced");
             osPartToModify = (Outsourced) partsTable.getSelectionModel().getSelectedItem();
             partTypeIH = false;
         }
@@ -119,6 +118,8 @@ public class MainScreen implements Initializable {
     }
 
     public void onModifyProduct(ActionEvent actionEvent) throws IOException {
+        productToModify = (Product) productsTable.getSelectionModel().getSelectedItem();
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyProduct.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 900, 700);
