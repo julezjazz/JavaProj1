@@ -46,7 +46,7 @@ public class AddProduct implements Initializable {
     public TextField prodMinTF;
 
 
-    public Label warningLabel2;
+    public Label warningLabel;
 
     public Inventory inventory;
 
@@ -77,7 +77,7 @@ public class AddProduct implements Initializable {
     }
 
     public void getResultsParts2(ActionEvent actionEvent) {
-        warningLabel2.setText("");
+        warningLabel.setText("");
 
         String s = searchBarPart2.getText();
 
@@ -94,7 +94,7 @@ public class AddProduct implements Initializable {
                 parts.add(part);
         }
         if (parts.size() == 0) {
-            warningLabel2.setText("Part could not be found. Please try a new search.");
+            warningLabel.setText("Part could not be found. Please try a new search.");
         }
     }
 
@@ -121,23 +121,38 @@ public class AddProduct implements Initializable {
     public void onSaveButton(ActionEvent actionEvent) throws IOException {
         prodAutoId += 2;
 
-        Product product = new Product(prodAutoId, prodNameTF.getText(), Double.parseDouble(prodPriceTF.getText()),
-                Integer.parseInt(prodStockTF.getText()), Integer.parseInt(prodMaxTF.getText()),
-                Integer.parseInt(prodMinTF.getText()));
+        warningLabel.setText("");
 
-        inventory.addProduct(product);
-
-        for (Part items : bottomTableList) {
-            product.addAssociatedPart(items);
+        if(Integer.parseInt(prodMinTF.getText()) >= Integer.parseInt(prodMaxTF.getText())){
+            warningLabel.setText("Min must be less than max");
+        }
+        else if(Integer.parseInt(prodMinTF.getText()) > Integer.parseInt(prodStockTF.getText())){
+            warningLabel.setText("Inventory level must be greater than or equal to min");
+        }
+        else if(Integer.parseInt(prodMaxTF.getText()) < Integer.parseInt(prodStockTF.getText())) {
+            warningLabel.setText("Inventory level must be less than or equal to max");
         }
 
+        else {
 
-        Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 850, 750);
-        stage.setTitle("Inventory Management");
-        stage.setScene(scene);
-        stage.show();
+            Product product = new Product(prodAutoId, prodNameTF.getText(), Double.parseDouble(prodPriceTF.getText()),
+                    Integer.parseInt(prodStockTF.getText()), Integer.parseInt(prodMaxTF.getText()),
+                    Integer.parseInt(prodMinTF.getText()));
+
+            inventory.addProduct(product);
+
+            for (Part items : bottomTableList) {
+                product.addAssociatedPart(items);
+            }
+
+
+            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 850, 750);
+            stage.setTitle("Inventory Management");
+            stage.setScene(scene);
+            stage.show();
+        }
 
     }
 }

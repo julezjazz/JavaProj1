@@ -47,7 +47,7 @@ public class ModifyProduct implements Initializable {
     public TextField prodMaxTF2;
     public TextField prodMinTF2;
 
-    public Label warningLabel3;
+    public Label warningLabel;
 
     public Inventory inventory;
 
@@ -87,7 +87,7 @@ public class ModifyProduct implements Initializable {
     }
 
     public void getResultsParts3(ActionEvent actionEvent) {
-        warningLabel3.setText("");
+        warningLabel.setText("");
 
         String s = searchBarPart3.getText();
 
@@ -104,7 +104,7 @@ public class ModifyProduct implements Initializable {
                 parts.add(part);
         }
         if (parts.size() == 0) {
-            warningLabel3.setText("Part could not be found. Please try a new search.");
+            warningLabel.setText("Part could not be found. Please try a new search.");
         }
     }
 
@@ -128,24 +128,37 @@ public class ModifyProduct implements Initializable {
     }
 
     public void onSave(ActionEvent actionEvent) throws IOException {
-        productToModify.setName(prodNameTF2.getText());
-        productToModify.setStock(Integer.parseInt(prodStockTF2.getText()));
-        productToModify.setPrice(Double.parseDouble(prodPriceTF2.getText()));
-        productToModify.setMax(Integer.parseInt(prodMaxTF2.getText()));
-        productToModify.setMin(Integer.parseInt(prodMinTF2.getText()));
+        warningLabel.setText("");
 
-        productToModify.getAllAssociatedParts().clear();
-
-        for (Part items : bottomTableList2) {
-            productToModify.addAssociatedPart(items);
+        if(Integer.parseInt(prodMinTF2.getText()) >= Integer.parseInt(prodMaxTF2.getText())){
+            warningLabel.setText("Min must be less than max");
         }
+        else if(Integer.parseInt(prodMinTF2.getText()) > Integer.parseInt(prodStockTF2.getText())){
+            warningLabel.setText("Inventory level must be greater than or equal to min");
+        }
+        else if(Integer.parseInt(prodMaxTF2.getText()) < Integer.parseInt(prodStockTF2.getText())) {
+            warningLabel.setText("Inventory level must be less than or equal to max");
+        }
+        else {
+            productToModify.setName(prodNameTF2.getText());
+            productToModify.setStock(Integer.parseInt(prodStockTF2.getText()));
+            productToModify.setPrice(Double.parseDouble(prodPriceTF2.getText()));
+            productToModify.setMax(Integer.parseInt(prodMaxTF2.getText()));
+            productToModify.setMin(Integer.parseInt(prodMinTF2.getText()));
 
-        Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 850, 750);
-        stage.setTitle("Inventory Management");
-        stage.setScene(scene);
-        stage.show();
+            productToModify.getAllAssociatedParts().clear();
+
+            for (Part items : bottomTableList2) {
+                productToModify.addAssociatedPart(items);
+            }
+
+            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 850, 750);
+            stage.setTitle("Inventory Management");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
 }
