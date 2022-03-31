@@ -6,8 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**This class creates an app that displays our screens.
+ * FUTURE ENHANCEMENT: This app could have a build feature that would remove parts from inventory whenever a product
+ * that used those parts was built. In addition, it would add to the inventory number for the product that had been
+ * built.*/
 public class Main extends Application {
 
+    /** This method causes our MainScreen to display as the app starts. */
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
