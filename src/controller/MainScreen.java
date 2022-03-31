@@ -80,22 +80,34 @@ public class MainScreen implements Initializable {
     }
 
     public void onModifyPart(ActionEvent actionEvent) throws IOException {
-       if (partsTable.getSelectionModel().getSelectedItem().getClass() == InHouse.class){
+        if (partsTable.getSelectionModel().getSelectedItem() == null) {
+            warningLabel.setText("Please select a part to modify");
+        }
+        else if (partsTable.getSelectionModel().getSelectedItem().getClass() == InHouse.class){
            ihPartToModify = (InHouse) partsTable.getSelectionModel().getSelectedItem();
            partTypeIH = true;
+
+            Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 650, 550);
+            stage.setTitle("Modify Part");
+            stage.setScene(scene);
+            stage.show();
         }
-        else if (partsTable.getSelectionModel().getSelectedItem().getClass() == Outsourced.class) {
+        else {
             osPartToModify = (Outsourced) partsTable.getSelectionModel().getSelectedItem();
             partTypeIH = false;
+
+            Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 650, 550);
+            stage.setTitle("Modify Part");
+            stage.setScene(scene);
+            stage.show();
         }
         //add line for error message
 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 650, 550);
-        stage.setTitle("Modify Part");
-        stage.setScene(scene);
-        stage.show();
+
     }
 
     public void onDeletePart(ActionEvent actionEvent) {
@@ -118,23 +130,33 @@ public class MainScreen implements Initializable {
     }
 
     public void onModifyProduct(ActionEvent actionEvent) throws IOException {
-        productToModify = (Product) productsTable.getSelectionModel().getSelectedItem();
+        if(productsTable.getSelectionModel().getSelectedItem() == null) {
+            warningLabel.setText("Please select a product to modify");
+        }
+        else {
+            productToModify = (Product) productsTable.getSelectionModel().getSelectedItem();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyProduct.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 900, 700);
-        stage.setTitle("Modify Product");
-        stage.setScene(scene);
-        stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/ModifyProduct.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 900, 700);
+            stage.setTitle("Modify Product");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     public void onDeleteProduct(ActionEvent actionEvent) {
         Product sProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
-        inventory.deleteProduct(sProduct);
-        if (inventory.deleteProduct(sProduct) == false) {
-            warningLabel.setText("Invalid Selection");
-        } else {
-            warningLabel.setText("");
+        if (sProduct.getAllAssociatedParts().size() != 0) {
+            warningLabel.setText("Products with associated parts cannot be deleted");
+        }
+        else {
+            inventory.deleteProduct(sProduct);
+            if (inventory.deleteProduct(sProduct) == false) {
+                warningLabel.setText("Invalid Selection");
+            } else {
+                warningLabel.setText("");
+            }
         }
     }
 
