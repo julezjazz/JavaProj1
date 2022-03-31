@@ -2,15 +2,15 @@ package model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+/** This class sets up methods to be used on parts and products. */
 public class Inventory {
 
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
-    //parts
+    /** Adds a part to the list of all parts. */
     public static void addPart(Part newPart) {allParts.add(newPart);}
-
+    /** Searches the list of all parts to find a match based on ID. */
     public static Part lookupPart(int partId){
         for (Part part : allParts){
             if(part.getId() == partId) {
@@ -19,7 +19,7 @@ public class Inventory {
         }
         return null;
     }
-
+    /** Searches the list of all parts to find a match based on name. */
     public static ObservableList<Part> lookupPart(String partName) {
         ObservableList<Part> namedParts = FXCollections.observableArrayList();
 
@@ -32,21 +32,20 @@ public class Inventory {
     }
 
     //public static void updatePart(int index, Part selectedPart){}
-
+    /** Attempts to delete a part from the list of all parts and returns true if successful and false if not. */
     public static boolean deletePart(Part selectedPart){
         if(selectedPart == null)
             return false;
         allParts.remove(selectedPart);
         return true;
     }
-
-
+    /** Returns list of all parts. */
     public static ObservableList<Part> getAllParts() {return allParts;}
 
 
-   //products
+    /** Adds a product to the list of all products. */
     public static void addProduct(Product newProduct) {allProducts.add(newProduct);}
-
+    /** Searches the list of all products based on ID. */
     public static Product lookupProduct(int productId){
         for (Product product : allProducts) {
             if (product.getId() == productId) {
@@ -55,7 +54,7 @@ public class Inventory {
         }
         return null;
     }
-
+    /** Searches the list of all products based on Name. */
     public static ObservableList<Product> lookupProduct(String productName){
         ObservableList<Product> namedProducts = FXCollections.observableArrayList();
         for (Product product : allProducts) {
@@ -67,18 +66,18 @@ public class Inventory {
     }
 
     //public static void updateProduct(int index, Product newProduct){}
-
+    /** Attempts to delete a product from the list of all products. Returns true if successful and false if not. */
     public static boolean deleteProduct(Product selectedProduct){
         if(selectedProduct == null)
             return false;
         allProducts.remove(selectedProduct);
         return true;
     }
-
+    /** Returns the list of all products. */
     public static ObservableList<Product> getAllProducts() {return allProducts;}
 
     //Test Data Below
-    static {
+    /*static {
        addTestData();
     }
 
@@ -99,6 +98,6 @@ public class Inventory {
         allProducts.add(product1);
         allProducts.add(product2);
 
-    }
+    } */
 
 }
