@@ -78,22 +78,26 @@ public class AddProduct implements Initializable {
 
     public void getResultsParts2(ActionEvent actionEvent) {
         warningLabel.setText("");
+        try {
+            String s = searchBarPart2.getText();
 
-        String s = searchBarPart2.getText();
+            ObservableList<Part> parts = inventory.lookupPart(s);
 
-        ObservableList<Part> parts = inventory.lookupPart(s);
+            partsTable2.setItems(parts);
+            searchBarPart2.setText("");
 
-        partsTable2.setItems(parts);
-        searchBarPart2.setText("");
+            if (parts.size() == 0) {
 
-        if (parts.size() == 0) {
-
-            int id = Integer.parseInt(s);
-            Part part = inventory.lookupPart(id);
-            if (part != null)
-                parts.add(part);
+                int id = Integer.parseInt(s);
+                Part part = inventory.lookupPart(id);
+                if (part != null)
+                    parts.add(part);
+            }
+            if (parts.size() == 0) {
+                warningLabel.setText("Part could not be found. Please try a new search.");
+            }
         }
-        if (parts.size() == 0) {
+        catch (NumberFormatException e) {
             warningLabel.setText("Part could not be found. Please try a new search.");
         }
     }

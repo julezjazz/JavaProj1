@@ -164,41 +164,51 @@ public class MainScreen implements Initializable {
     public void getResultsParts(ActionEvent actionEvent) {
        warningLabel.setText("");
 
-        String s = searchBarPart.getText();
+       try {
+           String s = searchBarPart.getText();
 
-        ObservableList<Part> parts = inventory.lookupPart(s);
+           ObservableList<Part> parts = inventory.lookupPart(s);
 
-        partsTable.setItems(parts);
-        searchBarPart.setText("");
+           partsTable.setItems(parts);
+           searchBarPart.setText("");
 
-        if (parts.size() == 0) {
+           if (parts.size() == 0) {
 
-           int id = Integer.parseInt(s);
-           Part part = inventory.lookupPart(id);
-           if (part != null)
-              parts.add(part);
+               int id = Integer.parseInt(s);
+               Part part = inventory.lookupPart(id);
+               if (part != null)
+                   parts.add(part);
            }
-        if (parts.size() == 0) {
-            warningLabel.setText("Part could not be found. Please try a new search.");
-        }
+           if (parts.size() == 0) {
+               warningLabel.setText("Part could not be found. Please try a new search.");
+           }
+       }
+       catch (NumberFormatException e) {
+           warningLabel.setText("Part could not be found. Please try a new search.");
+       }
     }
 
     public void getResultsProducts(ActionEvent actionEvent){
         warningLabel.setText("");
 
-        String s = searchBarProduct.getText();
+        try {
+            String s = searchBarProduct.getText();
 
-        ObservableList<Product> products = inventory.lookupProduct(s);
-        productsTable.setItems(products);
-        searchBarProduct.setText("");
+            ObservableList<Product> products = inventory.lookupProduct(s);
+            productsTable.setItems(products);
+            searchBarProduct.setText("");
 
-        if (products.size() == 0) {
-            int id = Integer.parseInt(s);
-            Product product = inventory.lookupProduct(id);
-            if (product != null)
-                products.add(product);
+            if (products.size() == 0) {
+                int id = Integer.parseInt(s);
+                Product product = inventory.lookupProduct(id);
+                if (product != null)
+                    products.add(product);
+            }
+            if (products.size() == 0) {
+                warningLabel.setText("Product could not be found. Please try a new search.");
+            }
         }
-        if (products.size() == 0) {
+        catch (NumberFormatException e) {
             warningLabel.setText("Product could not be found. Please try a new search.");
         }
     }

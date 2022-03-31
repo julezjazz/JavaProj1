@@ -89,21 +89,26 @@ public class ModifyProduct implements Initializable {
     public void getResultsParts3(ActionEvent actionEvent) {
         warningLabel.setText("");
 
-        String s = searchBarPart3.getText();
+        try {
+            String s = searchBarPart3.getText();
 
-        ObservableList<Part> parts = inventory.lookupPart(s);
+            ObservableList<Part> parts = inventory.lookupPart(s);
 
-        partsTable3.setItems(parts);
-        searchBarPart3.setText("");
+            partsTable3.setItems(parts);
+            searchBarPart3.setText("");
 
-        if (parts.size() == 0) {
+            if (parts.size() == 0) {
 
-            int id = Integer.parseInt(s);
-            Part part = inventory.lookupPart(id);
-            if (part != null)
-                parts.add(part);
+                int id = Integer.parseInt(s);
+                Part part = inventory.lookupPart(id);
+                if (part != null)
+                    parts.add(part);
+            }
+            if (parts.size() == 0) {
+                warningLabel.setText("Part could not be found. Please try a new search.");
+            }
         }
-        if (parts.size() == 0) {
+        catch (NumberFormatException e) {
             warningLabel.setText("Part could not be found. Please try a new search.");
         }
     }
