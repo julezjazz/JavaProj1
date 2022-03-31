@@ -74,46 +74,47 @@ public class ModifyPart implements Initializable {
     public void onSaveButton(ActionEvent actionEvent) throws IOException {
         warningLabel.setText("");
 
-        if(Integer.parseInt(minTF2.getText()) >= Integer.parseInt(maxTF2.getText())){
-            warningLabel.setText("Min must be less than max");
-        }
-        else if(Integer.parseInt(minTF2.getText()) > Integer.parseInt(stockTF2.getText())){
-            warningLabel.setText("Inventory level must be greater than or equal to min");
-        }
-        else if(Integer.parseInt(maxTF2.getText()) < Integer.parseInt(stockTF2.getText())) {
-            warningLabel.setText("Inventory level must be less than or equal to max");
-        }
+        try {
+            if (nameTF2.getText() == "") {
+                warningLabel.setText("Please enter valid values in text fields");
+            } else if (Integer.parseInt(minTF2.getText()) >= Integer.parseInt(maxTF2.getText())) {
+                warningLabel.setText("Min must be less than max");
+            } else if (Integer.parseInt(minTF2.getText()) > Integer.parseInt(stockTF2.getText())) {
+                warningLabel.setText("Inventory level must be greater than or equal to min");
+            } else if (Integer.parseInt(maxTF2.getText()) < Integer.parseInt(stockTF2.getText())) {
+                warningLabel.setText("Inventory level must be less than or equal to max");
+            } else if (partTypeIH == true) {
+                ihPartToModify.setName(nameTF2.getText());
+                ihPartToModify.setStock(Integer.parseInt(stockTF2.getText()));
+                ihPartToModify.setPrice(Double.parseDouble(priceTF2.getText()));
+                ihPartToModify.setMax(Integer.parseInt(maxTF2.getText()));
+                ihPartToModify.setMin(Integer.parseInt(minTF2.getText()));
+                ihPartToModify.setMachineId(Integer.parseInt(toggleTF2.getText()));
 
-        else if (partTypeIH == true) {
-            ihPartToModify.setName(nameTF2.getText());
-            ihPartToModify.setStock(Integer.parseInt(stockTF2.getText()));
-            ihPartToModify.setPrice(Double.parseDouble(priceTF2.getText()));
-            ihPartToModify.setMax(Integer.parseInt(maxTF2.getText()));
-            ihPartToModify.setMin(Integer.parseInt(minTF2.getText()));
-            ihPartToModify.setMachineId(Integer.parseInt(toggleTF2.getText()));
+                Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 850, 750);
+                stage.setTitle("Inventory Management");
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                osPartToModify.setName(nameTF2.getText());
+                osPartToModify.setStock(Integer.parseInt(stockTF2.getText()));
+                osPartToModify.setPrice(Double.parseDouble(priceTF2.getText()));
+                osPartToModify.setMax(Integer.parseInt(maxTF2.getText()));
+                osPartToModify.setMin(Integer.parseInt(minTF2.getText()));
+                osPartToModify.setCompanyName(toggleTF2.getText());
 
-            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 850, 750);
-            stage.setTitle("Inventory Management");
-            stage.setScene(scene);
-            stage.show();
+                Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 850, 750);
+                stage.setTitle("Inventory Management");
+                stage.setScene(scene);
+                stage.show();
+            }
         }
-
-        else {
-            osPartToModify.setName(nameTF2.getText());
-            osPartToModify.setStock(Integer.parseInt(stockTF2.getText()));
-            osPartToModify.setPrice(Double.parseDouble(priceTF2.getText()));
-            osPartToModify.setMax(Integer.parseInt(maxTF2.getText()));
-            osPartToModify.setMin(Integer.parseInt(minTF2.getText()));
-            osPartToModify.setCompanyName(toggleTF2.getText());
-
-            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 850, 750);
-            stage.setTitle("Inventory Management");
-            stage.setScene(scene);
-            stage.show();
+        catch (NumberFormatException e){
+            warningLabel.setText("Please enter valid values in text fields");
         }
     }
 

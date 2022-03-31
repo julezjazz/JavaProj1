@@ -135,36 +135,38 @@ public class AddProduct implements Initializable {
         prodAutoId += 2;
 
         warningLabel.setText("");
+        try {
+            if (prodNameTF.getText() == "") {
+                warningLabel.setText("Please enter valid values in text fields");
+            } else if (Integer.parseInt(prodMinTF.getText()) >= Integer.parseInt(prodMaxTF.getText())) {
+                warningLabel.setText("Min must be less than max");
+            } else if (Integer.parseInt(prodMinTF.getText()) > Integer.parseInt(prodStockTF.getText())) {
+                warningLabel.setText("Inventory level must be greater than or equal to min");
+            } else if (Integer.parseInt(prodMaxTF.getText()) < Integer.parseInt(prodStockTF.getText())) {
+                warningLabel.setText("Inventory level must be less than or equal to max");
+            } else {
 
-        if(Integer.parseInt(prodMinTF.getText()) >= Integer.parseInt(prodMaxTF.getText())){
-            warningLabel.setText("Min must be less than max");
-        }
-        else if(Integer.parseInt(prodMinTF.getText()) > Integer.parseInt(prodStockTF.getText())){
-            warningLabel.setText("Inventory level must be greater than or equal to min");
-        }
-        else if(Integer.parseInt(prodMaxTF.getText()) < Integer.parseInt(prodStockTF.getText())) {
-            warningLabel.setText("Inventory level must be less than or equal to max");
-        }
+                Product product = new Product(prodAutoId, prodNameTF.getText(), Double.parseDouble(prodPriceTF.getText()),
+                        Integer.parseInt(prodStockTF.getText()), Integer.parseInt(prodMaxTF.getText()),
+                        Integer.parseInt(prodMinTF.getText()));
 
-        else {
+                inventory.addProduct(product);
 
-            Product product = new Product(prodAutoId, prodNameTF.getText(), Double.parseDouble(prodPriceTF.getText()),
-                    Integer.parseInt(prodStockTF.getText()), Integer.parseInt(prodMaxTF.getText()),
-                    Integer.parseInt(prodMinTF.getText()));
+                for (Part items : bottomTableList) {
+                    product.addAssociatedPart(items);
+                }
 
-            inventory.addProduct(product);
 
-            for (Part items : bottomTableList) {
-                product.addAssociatedPart(items);
+                Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 850, 750);
+                stage.setTitle("Inventory Management");
+                stage.setScene(scene);
+                stage.show();
             }
-
-
-            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 850, 750);
-            stage.setTitle("Inventory Management");
-            stage.setScene(scene);
-            stage.show();
+        }
+        catch (NumberFormatException e) {
+            warningLabel.setText("Please enter valid values in text fields");
         }
 
     }

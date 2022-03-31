@@ -61,43 +61,47 @@ public class AddPart implements Initializable {
 
         warningLabel.setText("");
 
-        if(Integer.parseInt(minTF.getText()) >= Integer.parseInt(maxTF.getText())){
-            warningLabel.setText("Min must be less than max");
+        try {
+
+            if (nameTF.getText() == "") {
+              warningLabel.setText("Please enter valid values in text fields");
+            } else if (Integer.parseInt(minTF.getText()) >= Integer.parseInt(maxTF.getText())) {
+                warningLabel.setText("Min must be less than max");
+            } else if (Integer.parseInt(minTF.getText()) > Integer.parseInt(stockTF.getText())) {
+                warningLabel.setText("Inventory level must be greater than or equal to min");
+            } else if (Integer.parseInt(maxTF.getText()) < Integer.parseInt(stockTF.getText())) {
+                warningLabel.setText("Inventory level must be less than or equal to max");
+            } else if (inHouse.isSelected()) {
+                InHouse iH = new InHouse(autoId, nameTF.getText(), Double.parseDouble(priceTF.getText()),
+                        Integer.parseInt(stockTF.getText()), Integer.parseInt(minTF.getText()),
+                        Integer.parseInt(maxTF.getText()), Integer.parseInt(toggleTF.getText()));
+
+                inventory.addPart(iH);
+
+                Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 850, 750);
+                stage.setTitle("Inventory Management");
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                Outsourced oS = new Outsourced(autoId, nameTF.getText(), Double.parseDouble(priceTF.getText()),
+                        Integer.parseInt(stockTF.getText()), Integer.parseInt(minTF.getText()),
+                        Integer.parseInt(maxTF.getText()), toggleTF.getText());
+
+                inventory.addPart(oS);
+
+                Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 850, 750);
+                stage.setTitle("Inventory Management");
+                stage.setScene(scene);
+                stage.show();
+            }
         }
-        else if(Integer.parseInt(minTF.getText()) > Integer.parseInt(stockTF.getText())){
-            warningLabel.setText("Inventory level must be greater than or equal to min");
-        }
-        else if(Integer.parseInt(maxTF.getText()) < Integer.parseInt(stockTF.getText())) {
-            warningLabel.setText("Inventory level must be less than or equal to max");
-        }
-        else if(inHouse.isSelected()) {
-            InHouse iH = new InHouse(autoId, nameTF.getText(), Double.parseDouble(priceTF.getText()),
-                    Integer.parseInt(stockTF.getText()), Integer.parseInt(minTF.getText()),
-                    Integer.parseInt(maxTF.getText()), Integer.parseInt(toggleTF.getText()));
-
-            inventory.addPart(iH);
-
-            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 850, 750);
-            stage.setTitle("Inventory Management");
-            stage.setScene(scene);
-            stage.show();
-        }
-
-        else {
-            Outsourced oS = new Outsourced(autoId, nameTF.getText(), Double.parseDouble(priceTF.getText()),
-                    Integer.parseInt(stockTF.getText()), Integer.parseInt(minTF.getText()),
-                    Integer.parseInt(maxTF.getText()), toggleTF.getText());
-
-            inventory.addPart(oS);
-
-            Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 850, 750);
-            stage.setTitle("Inventory Management");
-            stage.setScene(scene);
-            stage.show();
+        catch (NumberFormatException e)
+        {
+            warningLabel.setText("Please enter valid values in text fields");
         }
 
 
