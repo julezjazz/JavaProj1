@@ -100,7 +100,7 @@
                 </TableView>
                 <Pane prefHeight="84.0" prefWidth="450.0">
                     <children>
-                        <Button layoutX="333.0" layoutY="29.0" mnemonicParsing="false" text="Add" />
+                        <Button layoutX="333.0" layoutY="29.0" mnemonicParsing="false" onAction="#onAddButton" text="Add" />
                   <Label fx:id="warningLabel3" layoutX="14.0" layoutY="33.0" textFill="#f40505" />
                     </children>
                 </Pane>
@@ -117,8 +117,8 @@
                 </TableView>
                 <Pane prefHeight="130.0" prefWidth="450.0">
                     <children>
-                        <Button layoutX="273.0" layoutY="24.0" mnemonicParsing="false" text="Remove Associated Part" />
-                        <Button layoutX="273.0" layoutY="71.0" mnemonicParsing="false" text="Save" />
+                        <Button layoutX="273.0" layoutY="24.0" mnemonicParsing="false" onAction="#onRemove" text="Remove Associated Part" />
+                        <Button layoutX="273.0" layoutY="71.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
                         <Button fx:id="cancelButton" layoutX="365.0" layoutY="71.0" mnemonicParsing="false" onAction="#onCancelButton" text="Cancel" />
                     </children>
                 </Pane>

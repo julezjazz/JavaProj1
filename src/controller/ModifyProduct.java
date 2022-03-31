@@ -108,7 +108,36 @@ public class ModifyProduct implements Initializable {
         }
     }
 
+    public void onAddButton(ActionEvent actionEvent) {
+        Part part = (Part) partsTable3.getSelectionModel().getSelectedItem();
+        bottomTableList2.add(part);
+    }
+
+    public void onRemove(ActionEvent actionEvent) {
+        Part part = (Part) associatedPartsTable2.getSelectionModel().getSelectedItem();
+        bottomTableList2.remove(part);
+    }
+
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 850, 750);
+        stage.setTitle("Inventory Management");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onSave(ActionEvent actionEvent) throws IOException {
+        productToModify.setName(prodNameTF2.getText());
+        productToModify.setStock(Integer.parseInt(prodStockTF2.getText()));
+        productToModify.setPrice(Double.parseDouble(prodPriceTF2.getText()));
+        productToModify.setMax(Integer.parseInt(prodMaxTF2.getText()));
+        productToModify.setMin(Integer.parseInt(prodMinTF2.getText()));
+
+        for (Part items : bottomTableList2) {
+            productToModify.addAssociatedPart(items);
+        }
+
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 850, 750);
