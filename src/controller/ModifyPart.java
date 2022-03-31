@@ -36,8 +36,6 @@ public class ModifyPart implements Initializable {
     public TextField minTF2;
     public TextField toggleTF2;
 
-    public Inventory inventory;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (partTypeIH == true) {
@@ -52,6 +50,7 @@ public class ModifyPart implements Initializable {
         }
         else {
             outsourced.setSelected(true);
+            toggleLabel.setText("Company Name");
             idTF2.setText(Integer.toString(osPartToModify.getId()));
             nameTF2.setText(osPartToModify.getName());
             stockTF2.setText(Integer.toString(osPartToModify.getStock()));
