@@ -31,7 +31,7 @@ public class Inventory {
         return namedParts;
     }
 
-    //public static void updatePart(int index, Part selectedPart){}
+    public static void updatePart(int index, Part selectedPart){}
     /** Attempts to delete a part from the list of all parts and returns true if successful and false if not. */
     public static boolean deletePart(Part selectedPart){
         if(selectedPart == null)
@@ -65,7 +65,7 @@ public class Inventory {
         return namedProducts;
     }
 
-    //public static void updateProduct(int index, Product newProduct){}
+    public static void updateProduct(int index, Product newProduct){}
     /** Attempts to delete a product from the list of all products. Returns true if successful and false if not. */
     public static boolean deleteProduct(Product selectedProduct){
         if(selectedProduct == null)
