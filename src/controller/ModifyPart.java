@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static controller.MainScreen.*;
-
+/** This class is the controller for the ModifyPart.fxml page for the Modify Part scene. */
 public class ModifyPart implements Initializable {
 
     public Label toggleLabel;
@@ -35,7 +35,8 @@ public class ModifyPart implements Initializable {
     public TextField maxTF2;
     public TextField minTF2;
     public TextField toggleTF2;
-
+    /** This causes the text fields to populate based on which part was selected to modify in the previous screen. It
+     * also causes the radio button and toggle label to be selected based on which types of part is being modified. */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (partTypeIH == true) {
@@ -62,14 +63,15 @@ public class ModifyPart implements Initializable {
 
     }
 
+    /** This changes the toggle label to say "Machine ID" when the InHouse button is selected. */
     public void onInHouse(ActionEvent actionEvent) {
         toggleLabel.setText("Machine ID");
     }
-
+    /** This changes the toggle label to say "Company Name" when the Outsourced button is selected. */
     public void onOutsourced(ActionEvent actionEvent)  {
         toggleLabel.setText("Company Name");
     }
-
+    /** This saves changes made to the part being modified and returns to the Main Screen. */
     public void onSaveButton(ActionEvent actionEvent) throws IOException {
         warningLabel.setText("");
 
@@ -116,7 +118,7 @@ public class ModifyPart implements Initializable {
             warningLabel.setText("Please enter valid values in text fields");
         }
     }
-
+    /** Without saving changes, this returns to the Main Screen. */
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

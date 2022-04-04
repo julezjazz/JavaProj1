@@ -47,7 +47,7 @@ public class AddPart implements Initializable {
     public void onOutsourced(ActionEvent actionEvent) {
         toggleLabel.setText("Company Name");
     }
-    /** This changes the toggle label to say "Machine ID" when the Outsourced button is selected. */
+    /** This changes the toggle label to say "Machine ID" when the InHouse button is selected. */
     public void onInHouse(ActionEvent actionEvent) {
         toggleLabel.setText("Machine ID");
     }
