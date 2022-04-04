@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+//The javadoc folder is located in the main folder of the src folder
 
 /**This class creates an app that displays our screens.
  * FUTURE ENHANCEMENT: This app could have a build feature that would remove parts from inventory whenever a product
