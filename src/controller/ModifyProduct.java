@@ -22,7 +22,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static controller.MainScreen.productToModify;
-
+/** This class is the controller for the ModifyProduct.fxml page for the Modify Product scene. */
 public class ModifyProduct implements Initializable {
 
     public TableView partsTable3;
@@ -54,7 +54,8 @@ public class ModifyProduct implements Initializable {
     public ObservableList<Part> bottomTableList2 = FXCollections.observableArrayList();
 
 
-
+    /** This causes the tables to populate with specific lists of parts and fills out text fields based on which
+     * product was selected to modify in the previous scene. It also controls which attributes go to which columns. */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partsTable3.setItems(inventory.getAllParts());
@@ -85,7 +86,7 @@ public class ModifyProduct implements Initializable {
 
 
     }
-
+    /** This has the table display results based on what is entered into the search bar. */
     public void getResultsParts3(ActionEvent actionEvent) {
         warningLabel.setText("");
 
@@ -112,7 +113,7 @@ public class ModifyProduct implements Initializable {
             warningLabel.setText("Part could not be found. Please try a new search.");
         }
     }
-
+    /** This adds a part from the list of all parts to the list of associated parts for the product being modified. */
     public void onAddButton(ActionEvent actionEvent) {
         warningLabel.setText("");
         if (partsTable3.getSelectionModel().getSelectedItem() == null) {
@@ -123,7 +124,7 @@ public class ModifyProduct implements Initializable {
             bottomTableList2.add(part);
         }
     }
-
+    /** This deletes a part from the associated parts list. */
     public void onRemove(ActionEvent actionEvent) {
         warningLabel.setText("");
         if(associatedPartsTable2.getSelectionModel().getSelectedItem() == null) {
@@ -134,7 +135,7 @@ public class ModifyProduct implements Initializable {
             bottomTableList2.remove(part);
         }
     }
-
+    /** Without saving any changes, this returns to the Main Screen. */
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -143,7 +144,7 @@ public class ModifyProduct implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    /** This modifies an existing Product object based on user input and returns to the Main Screen. */
     public void onSave(ActionEvent actionEvent) throws IOException {
         warningLabel.setText("");
 

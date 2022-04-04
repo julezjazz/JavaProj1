@@ -21,7 +21,7 @@ import model.Product;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/** This class is the controller for the AddProduct.fxml page for the Add Product scene. */
 public class AddProduct implements Initializable {
 
     public TableView partsTable2;
@@ -55,7 +55,8 @@ public class AddProduct implements Initializable {
     public static int prodAutoId = 100;
 
 
-
+    /** This causes the tables to populate with specific lists of parts and controls which attributes go to which
+     * columns. */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partsTable2.setItems(inventory.getAllParts());
@@ -75,7 +76,7 @@ public class AddProduct implements Initializable {
 
 
     }
-
+    /** This has the table display results based on what is entered into the search bar. */
     public void getResultsParts2(ActionEvent actionEvent) {
         warningLabel.setText("");
         try {
@@ -102,7 +103,7 @@ public class AddProduct implements Initializable {
         }
     }
 
-
+    /** This adds a part from the list of all parts to the list of associated parts for the product being created. */
     public void onAddButton(ActionEvent actionEvent) {
         warningLabel.setText("");
 
@@ -114,7 +115,7 @@ public class AddProduct implements Initializable {
             bottomTableList.add(sPart);
         }
     }
-
+    /** Without saving any changes, this returns to the Main Screen. */
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -123,7 +124,7 @@ public class AddProduct implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    /** This deletes a part from the associated parts list. */
     public void onRemoveButton(ActionEvent actionEvent) {
         warningLabel.setText("");
         if(associatedPartsTable.getSelectionModel().getSelectedItem() == null) {
@@ -134,7 +135,8 @@ public class AddProduct implements Initializable {
             bottomTableList.remove(sPart);
         }
     }
-
+    /** This creates a new Product object based on user input, assigns the product a unique ID, adds the product to the
+     * list of all products, and returns to the Main Screen. */
     public void onSaveButton(ActionEvent actionEvent) throws IOException {
         prodAutoId += 2;
 
