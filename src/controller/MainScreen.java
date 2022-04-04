@@ -16,7 +16,7 @@ import model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/** This class is the controller for the MainScreen.fxml page for the Main Screen scene. */
 public class MainScreen implements Initializable {
 
     public Button addPart;
@@ -51,7 +51,7 @@ public class MainScreen implements Initializable {
 
     public Inventory inventory;
 
-
+    /** This populates the tables with the list of all parts and the list of all products. */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partsTable.setItems(inventory.getAllParts());
@@ -66,10 +66,8 @@ public class MainScreen implements Initializable {
         productNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         productInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         productPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
-
     }
-
+    /** This opens the Add Part scene. */
     public void onAddPart(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddPart.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -78,7 +76,7 @@ public class MainScreen implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    /** This opens the Modify Part scene and lets that controller know which part is being modified and what type. */
     public void onModifyPart(ActionEvent actionEvent) throws IOException {
         if (partsTable.getSelectionModel().getSelectedItem() == null) {
             warningLabel.setText("Please select a part to modify");
@@ -105,11 +103,11 @@ public class MainScreen implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
-        //add line for error message
+
 
 
     }
-
+    /** This deletes a part from the list of all parts and removes it from the table. */
     public void onDeletePart(ActionEvent actionEvent) {
         Part sPart = (Part) partsTable.getSelectionModel().getSelectedItem();
         inventory.deletePart(sPart);
@@ -119,7 +117,7 @@ public class MainScreen implements Initializable {
             warningLabel.setText("");
         }
     }
-
+    /** This opens the Add Product scene. */
     public void onAddProduct(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddProduct.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -128,7 +126,7 @@ public class MainScreen implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    /** This opens the Modify Product scene and tells that controller which product to modify. */
     public void onModifyProduct(ActionEvent actionEvent) throws IOException {
         if(productsTable.getSelectionModel().getSelectedItem() == null) {
             warningLabel.setText("Please select a product to modify");
@@ -144,7 +142,7 @@ public class MainScreen implements Initializable {
             stage.show();
         }
     }
-
+    /** This deletes a selected product from the list of products and removes it from the table. */
     public void onDeleteProduct(ActionEvent actionEvent) {
         Product sProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
         if (sProduct.getAllAssociatedParts().size() != 0) {
@@ -160,7 +158,7 @@ public class MainScreen implements Initializable {
         }
     }
 
-
+    /** This has the table show search results based on user input into the search bar. */
     public void getResultsParts(ActionEvent actionEvent) {
        warningLabel.setText("");
 
@@ -187,7 +185,7 @@ public class MainScreen implements Initializable {
            warningLabel.setText("Part could not be found. Please try a new search.");
        }
     }
-
+    /** This has the table show search results based on user input into the search bar. */
     public void getResultsProducts(ActionEvent actionEvent){
         warningLabel.setText("");
 
@@ -213,7 +211,7 @@ public class MainScreen implements Initializable {
         }
     }
 
-
+    /** This closes/ends the application. */
     public void onExitButton(ActionEvent actionEvent) {
         System.exit(0);
     }
