@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 /**This class creates an app that displays our screens.
  * FUTURE ENHANCEMENT: This app could have a build feature that would remove parts from inventory whenever a product
  * that used those parts was built. In addition, it would add to the inventory number for the product that had been
- * built.*/
+ * built.
+ * Runtime error is located in the first comment of AddProduct.java. */
 public class Main extends Application {
 
     /** This method causes our MainScreen to display as the app starts. */

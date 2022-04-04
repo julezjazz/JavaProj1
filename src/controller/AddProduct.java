@@ -21,7 +21,10 @@ import model.Product;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-/** This class is the controller for the AddProduct.fxml page for the Add Product scene. */
+/** This class is the controller for the AddProduct.fxml page for the Add Product scene.
+ * RUNTIME ERROR: Initially, under the onAddPart method, I tried to add the part directly to the list of associated
+ * parts for the Product. It did not work, because the Product object had not yet been created. Once I went back and
+ * created a new list just for the table, the issue was resolved. */
 public class AddProduct implements Initializable {
 
     public TableView partsTable2;
