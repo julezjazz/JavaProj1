@@ -46,7 +46,7 @@ public class ModifyPart implements Initializable {
             stockTF2.setText(Integer.toString(ihPartToModify.getStock()));
             priceTF2.setText(Double.toString(ihPartToModify.getPrice()));
             maxTF2.setText(Integer.toString(ihPartToModify.getMax()));
-            minTF2.setText(Integer.toString(ihPartToModify.getMax()));
+            minTF2.setText(Integer.toString(ihPartToModify.getMin()));
             toggleTF2.setText(Integer.toString(ihPartToModify.getMachineId()));
         }
         else {
@@ -57,7 +57,7 @@ public class ModifyPart implements Initializable {
             stockTF2.setText(Integer.toString(osPartToModify.getStock()));
             priceTF2.setText(Double.toString(osPartToModify.getPrice()));
             maxTF2.setText(Integer.toString(osPartToModify.getMax()));
-            minTF2.setText(Integer.toString(osPartToModify.getMax()));
+            minTF2.setText(Integer.toString(osPartToModify.getMin()));
             toggleTF2.setText(osPartToModify.getCompanyName());
         }
 

@@ -77,7 +77,7 @@ public class Inventory {
     public static ObservableList<Product> getAllProducts() {return allProducts;}
 
     //Test Data Below
-    /*static {
+    /* static {
        addTestData();
     }
 
