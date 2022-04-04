@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/** This class is the controller for the AddPart.fxml page for the Add Part scene. */
 public class AddPart implements Initializable {
 
     public Label toggleLabel;
@@ -39,22 +40,20 @@ public class AddPart implements Initializable {
 
 
 
-
+    /** This method controls how the scene appears and functions as it is first opened. */
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-    }
-
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    /** This changes the toggle label to say "Company Name" when the Outsourced button is selected. */
     public void onOutsourced(ActionEvent actionEvent) {
         toggleLabel.setText("Company Name");
     }
-
+    /** This changes the toggle label to say "Machine ID" when the Outsourced button is selected. */
     public void onInHouse(ActionEvent actionEvent) {
         toggleLabel.setText("Machine ID");
     }
 
-
+    /** This creates a new Part object, generates a unique ID for it, and adds it to the list of all parts. It also
+     * returns to the Main Screen. */
     public void onSaveButton(ActionEvent actionEvent) throws IOException {
 
         autoId += 2;
@@ -107,7 +106,7 @@ public class AddPart implements Initializable {
 
     }
 
-
+    /** Without saving any changes, this returns to the Main Screen. */
     public void onCancelButton(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/MainScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
