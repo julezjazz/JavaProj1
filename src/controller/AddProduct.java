@@ -155,9 +155,9 @@ public class AddProduct implements Initializable {
                 warningLabel.setText("Inventory level must be less than or equal to max");
             } else {
 
-                Product product = new Product(prodAutoId, prodNameTF.getText(), Double.parseDouble(prodPriceTF.getText()),
-                        Integer.parseInt(prodStockTF.getText()), Integer.parseInt(prodMaxTF.getText()),
-                        Integer.parseInt(prodMinTF.getText()));
+                Product product = new Product(prodAutoId, prodNameTF.getText(),
+                        Double.parseDouble(prodPriceTF.getText()), Integer.parseInt(prodStockTF.getText()),
+                        Integer.parseInt(prodMinTF.getText()), Integer.parseInt(prodMaxTF.getText()));
 
                 inventory.addProduct(product);
 
