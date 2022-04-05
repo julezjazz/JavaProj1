@@ -114,7 +114,7 @@ public class MainScreen implements Initializable {
         if (inventory.deletePart(sPart) == false) {
             warningLabel.setText("Invalid Selection");
         } else {
-            warningLabel.setText("");
+            warningLabel.setText("Part successfully deleted");
         }
     }
     /** This opens the Add Product scene. */
@@ -153,7 +153,7 @@ public class MainScreen implements Initializable {
             if (inventory.deleteProduct(sProduct) == false) {
                 warningLabel.setText("Invalid Selection");
             } else {
-                warningLabel.setText("");
+                warningLabel.setText("Product successfully deleted");
             }
         }
     }

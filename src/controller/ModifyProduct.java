@@ -133,6 +133,7 @@ public class ModifyProduct implements Initializable {
         else {
             Part part = (Part) associatedPartsTable2.getSelectionModel().getSelectedItem();
             bottomTableList2.remove(part);
+            warningLabel.setText("Part successfully removed");
         }
     }
     /** Without saving any changes, this returns to the Main Screen. */

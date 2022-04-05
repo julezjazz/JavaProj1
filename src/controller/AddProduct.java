@@ -136,6 +136,7 @@ public class AddProduct implements Initializable {
         else {
             Part sPart = (Part) associatedPartsTable.getSelectionModel().getSelectedItem();
             bottomTableList.remove(sPart);
+            warningLabel.setText("Part successfully removed");
         }
     }
     /** This creates a new Product object based on user input, assigns the product a unique ID, adds the product to the
